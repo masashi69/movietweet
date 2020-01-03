@@ -49,4 +49,16 @@ AS = 'Your Access Token Secret'
 
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">2019-08-24に「Pulp Fiction」を視聴しました。<br><br>その他Infomation<br>---<br>Year: 1994<br>Genre: Crime, Drama<br>Director: Quentin Tarantino<br>Actors: Tim Roth, Amanda Plummer, Laura Lovelace, John Travolta<br>Production: Miramax Films<br>---</p>&mdash; masashi (@palomax69) <a href="https://twitter.com/palomax69/status/1165166653006467072?ref_src=twsrc%5Etfw">August 24, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+* ツイート内容の取得
+
+```sh
+# python gettw.py
+2019-12-22 00:18:49 American Honey
+2019-12-14 22:48:18 The Founder
+2019-12-07 23:07:18 The Mule
+2019-11-30 23:08:27 Atomic Blonde
+2019-11-23 23:33:41 The Intouchables
+2019-11-16 23:48:43 Burnt
+```
+
 
