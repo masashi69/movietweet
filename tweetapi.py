@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import tweepy
-import sys
 import configure
 
 Consumer_Key=configure.CK
