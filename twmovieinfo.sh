@@ -11,12 +11,12 @@ fi
 DATE=$(date +%F)
 INFO=$(echo "$movieinfo" | cut -d ' ' -f 2- | grep -Pe '^Y|^G|^Di|^Ac|^Pr')
 # sedで行末スペース削除
-TITLE=$(echo "$movieinfo" | grep Title | awk '{c="";for(i=3;i<=NF;i++) c=c $i" " ;print c}'| sed -e 's/ $//')
+TITLE=$(echo "$movieinfo" | grep Title | awk '{c="";for(i=3;i<=NF;i++) c=c $i" " ;print c}'| sed -e 's/ $//'| head -n1)
 
 TWEET="""\
 ${DATE}に「${TITLE}」を視聴しました。
 
-その他Infomation
+Infomation
 ---
 ${INFO}
 ---
