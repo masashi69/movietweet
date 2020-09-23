@@ -22,4 +22,21 @@ ${INFO}
 ---
 """
 
-python posttw.py "${TWEET}"
+echo "${TWEET}"
+strings=$(echo "${TWEET}" | wc -c)
+echo "${strings}文字"
+
+echo -n "投稿しますか?: [y/n]"
+read CONFIRM
+# デフォルトはNo
+case $CONFIRM in
+    [Yy]*)
+        python posttw.py "${TWEET}"
+        echo "投稿を完了しました。"
+    ;;
+    *)
+        echo "スクリプトを終了します。"
+        exit 0
+    ;;
+esac
+
