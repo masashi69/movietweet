@@ -13,7 +13,7 @@ INFO=$(echo "$movieinfo" | cut -d ' ' -f 2- | grep -Pe '^Y|^G|^Di|^Ac|^Pr')
 # sedで行末スペース削除
 TITLE=$(echo "$movieinfo" | grep Title | awk '{c="";for(i=3;i<=NF;i++) c=c $i" " ;print c}'| sed -e 's/ $//'| head -n1)
 
-TWEET="""\
+SUMMARY="""\
 ${DATE}に「${TITLE}」を視聴しました。
 
 Infomation
@@ -22,10 +22,10 @@ ${INFO}
 ---
 """
 
-echo "${TWEET}"
-strings=$(echo "${TWEET}" | wc -c)
-echo "${strings}文字"
+# 投稿上限の280byte以上を切り捨て
+TWEET=$(echo "${SUMMARY}" | head -c 280)
 
+echo "${SUMMARY}"
 echo -n "投稿しますか?: [y/n]"
 read CONFIRM
 # デフォルトはNo
