@@ -6,8 +6,6 @@ Twitter APIを利用した映画情報投稿ツールです。
 
 使用前に下記が必要です。
 
-* Bash-snippetsのmovieコマンド
-  - https://github.com/alexanderepstein/Bash-Snippets
 * TwitterAPIトークン、キー
   - https://developer.twitter.com/
 
