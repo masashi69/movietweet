@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # タイトルにスペースを含む場合がある
-movieinfo=$(movies -d $@)
+movieinfo=$(python getinfo.py $@)
 
 if [ $? == 1 ] ; then
     echo "タイトルが見つかりません。終了します。"
@@ -9,9 +9,8 @@ if [ $? == 1 ] ; then
 fi
 
 DATE=$(date +%F)
-INFO=$(echo "$movieinfo" | cut -d ' ' -f 2- | grep -Pe '^Y|^G|^Di|^Ac|^Pr')
-# sedで行末スペース削除
-TITLE=$(echo "$movieinfo" | grep Title | awk '{c="";for(i=3;i<=NF;i++) c=c $i" " ;print c}'| sed -e 's/ $//'| head -n1)
+INFO=$(echo "$movieinfo" | grep -Pe '^Year|^Genre|^Director|^Actors|^Production')
+TITLE=$(echo "$movieinfo" | grep -Po "Title: \K.+")
 
 SUMMARY="""\
 ${DATE}に「${TITLE}」を視聴しました。
