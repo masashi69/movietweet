@@ -15,7 +15,9 @@ def main():
 	dataload = json.loads(movieinfo.text)
 
 	datadump = json.dumps(dataload, indent=0)
-	shapedata = re.sub('\n.\n|"|,|{|}|\[|\]', "", datadump)
+
+	shapedata = re.sub('\n.\n|"|{|}|\[|\]', "", datadump)
+	shapedata = re.sub(',\n', "\n", shapedata)
 
 	print(shapedata)
 
