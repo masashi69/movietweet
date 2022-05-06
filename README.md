@@ -47,7 +47,47 @@ AS = 'Your Access Token Secret'
 
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">2019-08-24に「Pulp Fiction」を視聴しました。<br><br>その他Infomation<br>---<br>Year: 1994<br>Genre: Crime, Drama<br>Director: Quentin Tarantino<br>Actors: Tim Roth, Amanda Plummer, Laura Lovelace, John Travolta<br>Production: Miramax Films<br>---</p>&mdash; masashi (@palomax69) <a href="https://twitter.com/palomax69/status/1165166653006467072?ref_src=twsrc%5Etfw">August 24, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-* ツイート内容の取得
+
+### 公開年指定
+
+* --yearで公開年を指定
+
+##### 引数無し
+
+```sh
+$ bash twmovieinfo.sh start-up
+2022-05-05に「Start-Up」を視聴しました。
+ 
+Infomation
+---
+Year: 2020\u2013
+Genre: Comedy, Drama, Romance
+Director: N/A
+Actors: Bae Suzy, Nam Joo-hyuk, Kim Seon-Ho
+---
+ 
+投稿しますか?: [y/n]
+```
+
+##### 引数あり
+
+```sh
+$ bash twmovieinfo.sh start-up --year 2019
+2022-05-05に「Start-Up」を視聴しました。
+ 
+Infomation
+---
+Year: 2019
+Genre: Action, Comedy, Drama
+Director: Jeong-Yeol Choi
+Actors: Ma Dong-seok, Jeong Min Park, Jung Hae-In
+Production: N/A
+---
+ 
+投稿しますか?: [y/n]
+```
+
+### ツイート内容の取得
 
 ```sh
 # python gettw.py
