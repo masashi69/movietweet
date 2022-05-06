@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # タイトルにスペースを含む場合がある
-movieinfo=$(python getinfo.py $@)
+movieinfo=$(python getinfo.py --title $@)
 
 if [ $? == 1 ] ; then
     echo "タイトルが見つかりません。終了します。"
