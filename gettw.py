@@ -15,18 +15,22 @@ def find_title(apis):
     Text = apis.text[apis.text.find('「')+1:apis.text.find('」')]
     return Posted, Text
 
-for i in range(1, 5):
-    for info in API.user_timeline(count=200, page=i):
-        if 'tweet movieinfo' in info.source:
-            if args.year:
-                post, text = find_title(info)
-                if info.created_at.year == args.year:
-                    print(post, text)
+def main():
+    for i in range(1, 5):
+        for info in API.user_timeline(count=200, page=i):
+            if 'tweet movieinfo' in info.source:
+                if args.year:
+                    post, text = find_title(info)
+                    if info.created_at.year == args.year:
+                        print(post, text)
+                    else:
+                        pass
                 else:
-                    pass
+                    post, text = find_title()
+                    print(post, text)
             else:
-                post, text = find_title()
-                print(post, text)
-        else:
-            pass
+                pass
 
+
+if __name__ == '__main__':
+    main()
