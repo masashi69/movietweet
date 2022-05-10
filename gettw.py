@@ -10,16 +10,16 @@ args = parser.parse_args()
 
 API = TWauth()
 
-def find_title():
-    Posted = info.created_at + datetime.timedelta(hours=9)
-    Text = info.text[info.text.find('「')+1:info.text.find('」')]
+def find_title(apis):
+    Posted = apis.created_at + datetime.timedelta(hours=9)
+    Text = apis.text[apis.text.find('「')+1:apis.text.find('」')]
     return Posted, Text
 
 for i in range(1, 5):
     for info in API.user_timeline(count=200, page=i):
         if 'tweet movieinfo' in info.source:
             if args.year:
-                post, text = find_title()
+                post, text = find_title(info)
                 if info.created_at.year == args.year:
                     print(post, text)
                 else:
