@@ -16,21 +16,28 @@ def find_title(apis):
     return Posted, Text
 
 def main():
+
+    movies_list = []
+
     for i in range(1, 5):
         for info in API.user_timeline(count=200, page=i):
             if 'tweet movieinfo' in info.source:
+                post, text = find_title(info)
                 if args.year:
-                    post, text = find_title(info)
                     if info.created_at.year == args.year:
-                        print(post, text)
+                        movies_list.append({'posted_date': post, 'title': text})
                     else:
                         pass
                 else:
-                    post, text = find_title()
-                    print(post, text)
+                    movies_list.append({'posted_date': post, 'title': text})
             else:
                 pass
 
+    return movies_list
+
+
 
 if __name__ == '__main__':
-    main()
+    movies = main()
+    for movie in movies:
+        print(movie['posted_date'], movie['title'])
