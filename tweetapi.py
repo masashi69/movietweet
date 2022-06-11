@@ -15,5 +15,6 @@ def TWauth():
 
     return api
 
-TWauth()
+if __name__ == '__main__':
+    TWauth()
 
