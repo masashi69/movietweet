@@ -18,7 +18,7 @@ def getmovieinfo(infos):
 	shapedata = re.sub('\n.\n|"|{|}|\[|\]', "", datadump)
 	shapedata = re.sub(',\n', "\n", shapedata)
 
-	print(shapedata)
+	return shapedata
 
 def main():
 
@@ -32,9 +32,11 @@ def main():
 
 	if args.year:
 		getinfo_y = ''.join([url, '?apikey=', KEY, '&t=', gettitle, '&y={}'.format(args.year)])
-		getmovieinfo(getinfo_y)
+		i = getmovieinfo(getinfo_y)
 	else:
-		getmovieinfo(getinfo)
+		i = getmovieinfo(getinfo)
+
+	print(i)
 
 if __name__ == '__main__':
 	main()
