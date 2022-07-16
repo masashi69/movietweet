@@ -8,15 +8,7 @@ import argparse
 KEY = configure.APIKEY
 url = 'http://www.omdbapi.com/'
 
-parser = argparse.ArgumentParser()
-parser.add_argument('--title', nargs='+', help='Input movie title', required=True)
-parser.add_argument('--year',type=int, help='Specify released year')
-args = parser.parse_args()
-
-gettitle = '+'.join(args.title)
-getinfo = ''.join([url, '?apikey=', KEY, '&t=', gettitle])
-
-def getmovieinfo(infos=getinfo):
+def getmovieinfo(infos):
 
 	movieinfo = requests.get(infos)
 	dataload = json.loads(movieinfo.text)
@@ -30,11 +22,19 @@ def getmovieinfo(infos=getinfo):
 
 def main():
 
+	parser = argparse.ArgumentParser()
+	parser.add_argument('--title', nargs='+', help='Input movie title', required=True)
+	parser.add_argument('--year',type=int, help='Specify released year')
+	args = parser.parse_args()
+
+	gettitle = '+'.join(args.title)
+	getinfo = ''.join([url, '?apikey=', KEY, '&t=', gettitle])
+
 	if args.year:
 		getinfo_y = ''.join([url, '?apikey=', KEY, '&t=', gettitle, '&y={}'.format(args.year)])
 		getmovieinfo(getinfo_y)
 	else:
-		getmovieinfo()
+		getmovieinfo(getinfo)
 
 if __name__ == '__main__':
 	main()
