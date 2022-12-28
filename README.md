@@ -90,13 +90,32 @@ Production: N/A
 ### ツイート内容の取得
 
 ```sh
-# python gettw.py
-2019-12-22 00:18:49 American Honey
-2019-12-14 22:48:18 The Founder
-2019-12-07 23:07:18 The Mule
-2019-11-30 23:08:27 Atomic Blonde
-2019-11-23 23:33:41 The Intouchables
-2019-11-16 23:48:43 Burnt
+$ python gettw.py | head
+2022/12/25 22:55:21 Old School
+2022/12/25 09:35:17 The Batman
+2022/12/18 21:11:57 Charlie's Angels
+2022/12/17 23:36:10 The Ruthless
+2022/12/11 22:56:49 The Whole Nine Yards
+2022/12/10 23:21:26 Kiss the Girls
+2022/12/09 22:58:47 Paul Blart: Mall Cop 2
+2022/12/03 23:40:44 Project Power
+2022/11/27 22:04:41 Budapest
+2022/11/23 22:49:27 The Gentlemen
 ```
 
+### ツイート内容の取得 (投稿年指定)
+
+```sh
+$ python gettw.py --year=2021 | head
+2021/12/30 00:23:25 The Wolf of Wall Street
+2021/12/26 22:41:32 The Tourist
+2021/12/26 00:44:12 Saturday Night Fever
+2021/12/19 22:28:11 Showtime
+2021/12/12 21:48:05 Running with the Devil
+2021/12/12 09:41:46 The Informer
+2021/12/04 22:26:00 Office Christmas Party
+2021/11/27 21:56:23 Believer
+2021/11/23 23:00:05 Central Intelligence
+2021/11/21 22:03:05 R.I.P.D.
+```
 
