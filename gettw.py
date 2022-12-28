@@ -15,13 +15,22 @@ def find_title(apis):
     Text = apis.text[apis.text.find('「')+1:apis.text.find('」')]
     return Posted, Text
 
+def get_timeline(maxid=None):
+    timelines = API.user_timeline(count=200, max_id=maxid)
+
+    return timelines
+
 def main():
 
     movies_list = []
+    maxid=None
 
-    for i in range(1, 5):
-        for info in API.user_timeline(count=200, page=i):
-            if 'tweet movieinfo' in info.source:
+    for i in range(5):
+
+        timelines = get_timeline(maxid)
+
+        for info in timelines:
+            if 'tweet movieinfo' == info.source:
                 post, text = find_title(info)
                 if args.year:
                     if info.created_at.year == args.year:
@@ -32,6 +41,8 @@ def main():
                     movies_list.append({'posted_date': post, 'title': text})
             else:
                 pass
+
+        maxid = timelines.max_id
 
     return movies_list
 
