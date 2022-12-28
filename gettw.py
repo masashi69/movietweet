@@ -13,6 +13,7 @@ API = TWauth()
 def find_title(apis):
     Posted = apis.created_at + datetime.timedelta(hours=9)
     Text = apis.text[apis.text.find('「')+1:apis.text.find('」')]
+
     return Posted, Text
 
 def get_timeline(maxid=None):
@@ -24,28 +25,34 @@ def main():
 
     movies_list = []
     maxid=None
+    maxid_year = {2021: 1477970574488252416 ,2020: 1345640504269053952, \
+                  2019: 1212178772645928960, 2018: 948490042174943233}
 
-    for i in range(5):
+    if args.year:
+        maxid = maxid_year.get(args.year)
 
-        timelines = get_timeline(maxid)
+    timelines = get_timeline(maxid)
 
-        for info in timelines:
-            if 'tweet movieinfo' == info.source:
-                post, text = find_title(info)
-                if args.year:
-                    if info.created_at.year == args.year:
-                        movies_list.append({'posted_date': post, 'title': text})
-                    else:
-                        pass
-                else:
-                    movies_list.append({'posted_date': post, 'title': text})
-            else:
-                pass
+    for i in range(3):
 
         maxid = timelines.max_id
+        timelines += get_timeline(maxid)
+
+    for info in timelines:
+        if info.source == 'tweet movieinfo':
+            post, text = find_title(info)
+            if args.year:
+                if info.created_at.year == args.year:
+                    movies_list.append({'posted_date': post, 'title': text})
+                else:
+                    pass
+            else:
+                movies_list.append({'posted_date': post, 'title': text})
+        else:
+            pass
+
 
     return movies_list
-
 
 
 if __name__ == '__main__':
