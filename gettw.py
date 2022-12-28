@@ -40,4 +40,4 @@ def main():
 if __name__ == '__main__':
     movies = main()
     for movie in movies:
-        print(movie['posted_date'], movie['title'])
+        print(movie['posted_date'].strftime('%Y/%m/%d %H:%M:%S'), movie['title'])
