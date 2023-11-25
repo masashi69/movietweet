@@ -3,15 +3,14 @@
 import tweepy
 import configure
 
+Bearer_Token=configure.BA
 Consumer_Key=configure.CK
 Consumer_Secret=configure.CS
 Access_Token=configure.AT
 Access_Secret=configure.AS
 
 def TWauth():
-    auth = tweepy.OAuthHandler(Consumer_Key, Consumer_Secret)
-    auth.set_access_token(Access_Token, Access_Secret)
-    api = tweepy.API(auth)
+    api = tweepy.Client(bearer_token=Bearer_Token, consumer_key=Consumer_Key, consumer_secret=Consumer_Secret, access_token=Access_Token, access_token_secret=Access_Secret)
 
     return api
 
